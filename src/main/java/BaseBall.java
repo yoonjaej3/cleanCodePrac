@@ -9,6 +9,8 @@ public class BaseBall {
 
         String numberByComputer = generateNumberByComputer();
 
+        System.out.println( "컴퓨터 숫자 : " + numberByComputer);
+
         gameStart(numberByComputer);
 
     }
@@ -92,11 +94,11 @@ public class BaseBall {
 
         String mode = scanner.nextLine();
 
-        if (mode.equals("1")) return resultView.resumeMessage();
+        if (mode.equals("1")) return resultView.resumeMessage(); //1이면 재시작  false
 
-        if (mode.equals("2")) return resultView.exitMessage();
+        if (mode.equals("2")) return resultView.exitMessage(); //2이면 종료 true
 
-        return true;
+        return false;
     }
 
     private static String generateNumberByComputer() {
