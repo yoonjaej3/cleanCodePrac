@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,7 +17,7 @@ public class BaseBall {
 
     }
 
-    private static void gameStart(String numberByComputer) {
+    public static void gameStart(String numberByComputer) {
 
         boolean gameStart =false;
 
@@ -54,36 +56,44 @@ public class BaseBall {
 
     private static int countBall(String numberByComputer, String numberByHuman) {
 
-        int result = 0;
+        int ballCount = 0;
 
         for(int i = 0; i< numberByComputer.length(); i++){
+            char computerDigit = numberByComputer.charAt(i);
             for(int j = 0; j< numberByHuman.length(); j++){
-                if(numberByComputer.charAt(i)== numberByHuman.charAt(j)){
+                char humanDigit = numberByHuman.charAt(i);
 
-                    if(i!=j)
-                        result++;
+                if(isBall(computerDigit,humanDigit,i,j)) ballCount++;
 
-                }
             }
         }
-        return result;
+        return ballCount;
+    }
+
+    private static Boolean isBall(int computerDigit,int humanDigit,int computerDigitIndex , int humanDigitIndex){
+
+        return  computerDigit == humanDigit && computerDigitIndex != humanDigitIndex;
     }
 
     private static int countStrike(String numberByComputer, String numberByHuman) {
 
-        int result = 0;
+        int strikeCount = 0;
 
         for(int i = 0; i< numberByComputer.length(); i++){
+            char computerDigit = numberByComputer.charAt(i);
             for(int j = 0; j< numberByHuman.length(); j++){
-                if(numberByComputer.charAt(i)== numberByHuman.charAt(j)){
+                char humanDigit = numberByHuman.charAt(i);
 
-                    if(i==j)
-                        result++;
+                if(isStrike(computerDigit,humanDigit,i,j)) strikeCount++;
 
-                }
             }
         }
-        return result;
+        return strikeCount;
+    }
+
+    private static Boolean isStrike(int computerDigit,int humanDigit,int computerDigitIndex , int humanDigitIndex){
+
+        return  computerDigit == humanDigit && computerDigitIndex == humanDigitIndex;
     }
 
     private static Boolean checkMode(){
