@@ -34,7 +34,7 @@ public class BaseBall {
         }
     }
 
-    private static boolean checkEqual(String numberByComputer, String numberByHuman) {
+    public static boolean checkEqual(String numberByComputer, String numberByHuman) {
         if(numberByHuman.equals(numberByComputer)){
 
             if(checkMode()) return true;
@@ -54,7 +54,7 @@ public class BaseBall {
         return false;
     }
 
-    private static int countBall(String numberByComputer, String numberByHuman) {
+    public static int countBall(String numberByComputer, String numberByHuman) {
 
         int ballCount = 0;
 
@@ -70,12 +70,12 @@ public class BaseBall {
         return ballCount;
     }
 
-    private static Boolean isBall(int computerDigit,int humanDigit,int computerDigitIndex , int humanDigitIndex){
+    public static Boolean isBall(char computerDigit,char humanDigit,int computerDigitIndex , int humanDigitIndex){
 
         return  computerDigit == humanDigit && computerDigitIndex != humanDigitIndex;
     }
 
-    private static int countStrike(String numberByComputer, String numberByHuman) {
+    public static int countStrike(String numberByComputer, String numberByHuman) {
 
         int strikeCount = 0;
 
@@ -91,7 +91,7 @@ public class BaseBall {
         return strikeCount;
     }
 
-    private static Boolean isStrike(int computerDigit,int humanDigit,int computerDigitIndex , int humanDigitIndex){
+    public static Boolean isStrike(char computerDigit,char humanDigit,int computerDigitIndex , int humanDigitIndex){
 
         return  computerDigit == humanDigit && computerDigitIndex == humanDigitIndex;
     }
@@ -111,7 +111,7 @@ public class BaseBall {
         return false;
     }
 
-    private static String generateNumberByComputer() {
+    public static String generateNumberByComputer() {
         Random random = new Random();
 
         String numberByComputer = Integer.toString((int)(Math.random() * 9 + 1) * 100+ (int)(Math.random() * 9 + 1) * 10 + (int)(Math.random() * 9 + 1));
